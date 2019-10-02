@@ -13,7 +13,7 @@ class ColorPicker extends React.Component {
   state = {
 	displayColorPicker: false,
 	key: null,
-    color: "0xFFF",
+    color: "0xFFFFFF",
 	
   };
 
@@ -26,8 +26,12 @@ class ColorPicker extends React.Component {
   };
 
   handleChange = (color) => {
-    this.setState({ color: color.hex })
+	this.setState({ color: color.hex })
   };
+
+  handleChangeComplete = (color,event) => {
+	this.props.onChangeComplete(color,this.props.colorKey)}
+
 
   render() {
 
@@ -73,7 +77,7 @@ class ColorPicker extends React.Component {
         </div>
         { this.state.displayColorPicker ? <div style={ styles.popover }>
           <div style={ styles.cover } onClick={ this.handleClose }/>
-          <SketchPicker color={ this.state.color } onChange={ this.handleChange } />
+          <SketchPicker color={ this.state.color } onChange={ this.handleChange } onChangeComplete={this.handleChangeComplete}/>
 		</div> : null }
 		<div style={styles.hexLabel}>
 		<span>{ this.state.color.toUpperCase()} </span>
@@ -83,4 +87,4 @@ class ColorPicker extends React.Component {
   }
 }
 
-export { ColorPicker }
+export default ColorPicker 
