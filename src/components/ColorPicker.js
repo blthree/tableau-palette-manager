@@ -4,6 +4,13 @@
 import React from 'react'
 import reactCSS from 'reactcss'
 import { SketchPicker } from 'react-color'
+import Dialog, {
+  DialogTitle,
+  DialogContent,
+  DialogFooter,
+  DialogButton,
+} from '@material/react-dialog';
+import "@material/react-dialog/dist/dialog.css";
 
 function colorToHex (color) {
 	"0x"+Object.keys(color).map((x)=>parseInt(color[x]).toString(16)).slice(0,3).join("")
@@ -12,8 +19,9 @@ function colorToHex (color) {
 class ColorPicker extends React.Component {
   state = {
 	displayColorPicker: false,
-	key: null,
+	colorKey: this.props.colorKey,
     color: "0xFFFFFF",
+    isOpen: this.props.open,
 	
   };
 
@@ -22,7 +30,7 @@ class ColorPicker extends React.Component {
   };
 
   handleClose = () => {
-    this.setState({ displayColorPicker: false })
+    this.props.onDialogClose()
   };
 
   handleChange = (color) => {
@@ -69,20 +77,18 @@ class ColorPicker extends React.Component {
 		}
       },
     });
-
+console.log(this.props.colorKey)
     return (
-      <div>
-        <div style={ styles.swatch } onClick={ this.handleClick }>
-          <div style={ styles.color } />
-        </div>
-        { this.state.displayColorPicker ? <div style={ styles.popover }>
-          <div style={ styles.cover } onClick={ this.handleClose }/>
-          <SketchPicker color={ this.state.color } onChange={ this.handleChange } onChangeComplete={this.handleChangeComplete}/>
-		</div> : null }
-		<div style={styles.hexLabel}>
-		<span>{ this.state.color.toUpperCase()} </span>
-		</div>
-      </div>
+        <Dialog open={this.props.open} onClose={this.handleClose}>
+        <DialogTitle>Select Color #{this.props.colorKey+1}</DialogTitle>
+        <DialogContent>
+        <SketchPicker color={ this.state.color } onChange={ this.handleChange } onChangeComplete={this.handleChangeComplete}/>
+        </DialogContent>
+        <DialogFooter>
+          <DialogButton action='dismiss'>Dismiss</DialogButton>
+          <DialogButton action='accept' isDefault>Accept</DialogButton>
+        </DialogFooter>
+      </Dialog>
     )
   }
 }

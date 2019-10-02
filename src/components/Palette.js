@@ -1,12 +1,17 @@
-import React from 'react'
+import React, {Component} from 'react';
 import reactCSS from 'reactcss'
 import ColorPicker from './ColorPicker'
 import {ConfigTextArea} from '../components/ConfigTextArea'
+import '@material/react-list/dist/list.css'
+import List, {ListItem, ListItemText, ListDivider} from '@material/react-list';
+
+
 const duplicate = (x, n) => Array.from(new Array(n), () => x);
 const duplicate2 = (n) => new Array(n).fill(1);
 class Palette extends React.Component {
     state = {
-        colorList: new Array(4).fill("0xFFFFFF")
+        colorList: new Array(4).fill("0xFFFFFF"),
+        selectedIndex: null,
       };
  
     handleLengthChange = (event) => {
@@ -37,15 +42,25 @@ class Palette extends React.Component {
         this.setState({colorList:newColorList})
        
       };
- 
+      handleListClick = (listIndex)=> {
+          console.log(listIndex)
+          this.setState({selectedIndex: listIndex})
+      }
+
     render () {
         return (
             
             <div>
                 <input type="number" defaultValue={this.state.colorList.length} onChange={ this.handleLengthChange } ></input>
-                {duplicate2( this.state.colorList.length ).map((blankItem, index) => {
-                    return(<ColorPicker onChangeComplete={ this.handleChangeComplete.bind(this)} colorKey={index} key={index}/>)
-                }) } 
+                <List>
+{duplicate2( this.state.colorList.length ).map((blankItem, index) => {
+    return(
+    <ListItem onClick={()=>{this.handleListClick(index)}} key={index}>
+        <ColorPicker onChangeComplete={ this.handleChangeComplete.bind(this)} colorKey={index} key={index} open={index === this.state.selectedIndex }/>
+        <ListDivider />
+    </ListItem>)
+}) } 
+                </List>
                 <ConfigTextArea colorList={this.state.colorList} key={this.state.colorList}/>
             </div>
         )
