@@ -9,9 +9,9 @@
     "serve": "serve dist -p 3000"
   },
   "dependencies": {
+    "@material-ui/core": "^4.5.0",
+    "@material-ui/icons": "^4.4.3",
     "@material-ui/styles": "^4.5.0",
-    "@material/react-dialog": "^0.15.0",
-    "@material/react-list": "^0.15.0",
     "@reach/router": "^1.2.1",
     "axios": "^0.19.0",
     "react": "^16.9.0",
@@ -20,7 +20,8 @@
     "react-static": "^7.2.0",
     "react-static-plugin-reach-router": "^7.2.0",
     "react-static-plugin-sitemap": "^7.2.0",
-    "react-static-plugin-source-filesystem": "^7.2.0"
+    "react-static-plugin-source-filesystem": "^7.2.0",
+    "typeface-roboto": "0.0.75"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.2",

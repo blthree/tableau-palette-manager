@@ -1,5 +1,6 @@
 import React from 'react'
 import reactCSS from 'reactcss'
+import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 
 const duplicate = (x, n) => Array.from(new Array(n), () => x);
 
@@ -14,11 +15,11 @@ class ConfigTextArea extends React.Component {
 
     render() {
         let newVals = this.props.colorList.map((color) => { return (`<color>${color}</color>`) }).join("\n")
-        console.log(newVals)
+        //console.log(newVals)
         let val = `<color-palette name="Classic 10" type = "regular">\t${newVals}\n</color-palette>`
         return (
             <div>
-                <textarea rows={this.props.colorList.length + 4 > 3 ? this.props.colorList.length + 4 : 3} 
+                <TextareaAutosize rows={this.props.colorList.length + 4 > 3 ? this.props.colorList.length + 4 : 3} 
                     columns={100} style={{ width: "400px" }} value={val} readOnly />
             </div>
         )

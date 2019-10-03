@@ -4,13 +4,13 @@
 import React from 'react'
 import reactCSS from 'reactcss'
 import { SketchPicker } from 'react-color'
-import Dialog, {
-  DialogTitle,
-  DialogContent,
-  DialogFooter,
-  DialogButton,
-} from '@material/react-dialog';
-import "@material/react-dialog/dist/dialog.css";
+import Button from '@material-ui/core/Button';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+
 
 function colorToHex (color) {
 	"0x"+Object.keys(color).map((x)=>parseInt(color[x]).toString(16)).slice(0,3).join("")
@@ -77,17 +77,16 @@ class ColorPicker extends React.Component {
 		}
       },
     });
-console.log(this.props.colorKey)
+//console.log(this.props.colorKey)
     return (
         <Dialog open={this.props.open} onClose={this.handleClose}>
         <DialogTitle>Select Color #{this.props.colorKey+1}</DialogTitle>
         <DialogContent>
         <SketchPicker color={ this.state.color } onChange={ this.handleChange } onChangeComplete={this.handleChangeComplete}/>
         </DialogContent>
-        <DialogFooter>
-          <DialogButton action='dismiss'>Dismiss</DialogButton>
-          <DialogButton action='accept' isDefault>Accept</DialogButton>
-        </DialogFooter>
+        <DialogActions>
+          <Button onClick={this.handleClose}>Accept</Button>
+        </DialogActions>
       </Dialog>
     )
   }

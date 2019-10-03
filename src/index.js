@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { AppContainer } from 'react-hot-loader'
-
+import 'typeface-roboto';
 // Your top level component
 import App from './App'
 
