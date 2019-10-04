@@ -73,7 +73,7 @@ class PaletteHolder extends React.Component {
 
     render() {
         return (
-<Grid container className={classes.root} spacing={2}>
+<Grid container className={classes.root} spacing={2} justify="center">
 <Grid item xs={4}></Grid>
 <Grid item xs={4}>
 
@@ -81,14 +81,17 @@ class PaletteHolder extends React.Component {
     <PaletteSlider onLengthChange={this.handleLengthChange.bind(this)} colorList={this.state.colorList}/>
 </Grid>
 
-    </Grid><Grid item xs={4}></Grid>
-      <Grid item xs={12}>
-        <Grid container justify="center" spacing={2}>
-        <Grid item>
+    </Grid>
+    <Grid item xs={4}></Grid>
+
+        
          <NewPalette colorList={this.state.colorList}
                     onListClick={this.handleListClick.bind(this)}
                     onLengthChange={this.handleLengthChange.bind(this)}
-                /></Grid>
+                />
+                
+
+                <Grid container justify="center" spacing={2}>
                 <Grid item>
                 <ConfigTextArea colorList={this.state.colorList} key={this.state.colorList} />
                 <ColorPicker
@@ -96,11 +99,10 @@ class PaletteHolder extends React.Component {
                     onDialogClose={this.handleDialogClose.bind(this)}
                     colorKey={this.state.selectedIndex}
                     open={this.state.pickerOpen} />
-                
+                </Grid>
                 </Grid>
         </Grid>
-      </Grid>
-</Grid>
+
 
         )
     }
