@@ -49,14 +49,13 @@ class NewPalette extends React.Component {
 
     render() {
         return (
-            
             <div className={classes.root} style={{marginLeft: '10%', marginRight: '10%'}}>
                 <Grid container justify="center" spacing={2} direction="row">
                 {this.props.colorList.map((color, index) => {
-                    let z = (
-                        <Grid item xs={2} >
+                    return (
+                        <Grid item xs={2} key={`color-card-${index}`}>
                         <Card style={{ backgroundColor: color }} onClick={() => { this.handleListClick(index) }}
-                            key={index}>
+                            >
                             <CardContent>
                                 <Typography className={classes.title} color="textSecondary" gutterBottom>
                                     {"Color " + (index + 1) + ": "}
@@ -67,18 +66,9 @@ class NewPalette extends React.Component {
                             </CardContent>
                         </Card>
                         </Grid>
+                        
                     )
-                    return z
-                    // if(index===0){
-                    //     return ([<Grid item xs={2} ></Grid>,z])
-                    // }
-                    // else if (index%4===0){
-                    //     return ([<Grid item xs={2} ></Grid>,<Grid item xs={2} ></Grid>,z])
-                    // }
-                    // else {
-                    //     return z
-                    // }
-                    
+                    // return z                    
                 })} </Grid> </div>)
 
 

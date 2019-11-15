@@ -93,7 +93,7 @@ class PaletteHolder extends React.Component {
 
                 <Grid container justify="center" spacing={2}>
                 <Grid item>
-                <ConfigTextArea colorList={this.state.colorList} key={this.state.colorList} />
+                <ConfigTextArea colorList={this.state.colorList} paletteName="XXX" key={this.state.colorList} />
                 <ColorPicker
                     onChangeComplete={this.handleChangeComplete.bind(this)}
                     onDialogClose={this.handleDialogClose.bind(this)}

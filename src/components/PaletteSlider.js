@@ -25,13 +25,13 @@ class PaletteSlider extends React.Component {
     };
 
     handleLengthChange = (value) => {
-      console.log(value)
+      // console.log(value)
        this.props.onLengthChange(value)
     };
     handleSliderLengthChange = (value) => {
       
       if (value != this.state.sliderVal) {
-        console.log(this.state.sliderVal,value)
+        // console.log(this.state.sliderVal,value)
         this.setState({sliderVal: value})
         this.props.onLengthChange(value)
       }
