@@ -14,3 +14,4 @@ export default {
     require.resolve('react-static-plugin-sitemap'),
   ],
 }
+// https://highlightjs.org/static/demo/styles/atelier-dune-dark.css

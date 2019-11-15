@@ -3,6 +3,7 @@ import reactCSS from 'reactcss'
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import CopyButton from './CopyButton'
 import NameField from './NameField'
+import Highlight from 'react-highlight'
 
 const duplicate = (x, n) => Array.from(new Array(n), () => x);
 
@@ -38,6 +39,9 @@ class ConfigTextArea extends React.Component {
                     columns={100} style={{ width: "400px", margin: "10px" }} value={textVal} readOnly />
                     <CopyButton value={textVal}/> 
                     <NameField value={this.state.paletteName} handleNameChange={this.handleNameChange.bind(this)}/>
+                    <Highlight className='XML'>
+                        {textVal}
+                    </Highlight>
             </div>
         )
     }
